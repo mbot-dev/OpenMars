@@ -1,0 +1,84 @@
+package open.dolphin.project;
+
+import static open.dolphin.project.Project.CLAIM_SENDER;
+
+/**
+ *
+ * @author Kazushi Minagawa. Lab
+ */
+public class StubI18N extends ProjectStub {
+
+    private final String CONTEXT_ROOT = "/openDolphin/resources";
+    
+    private String baseURI;
+
+    @Override
+    public String getBaseURI() {
+        if (baseURI==null) {
+            String BASE_URI = "http://localhost";
+            baseURI = createBaseURI(BASE_URI, CONTEXT_ROOT);
+        }
+        return baseURI;
+    }
+    
+    @Override
+    public String getServerURI() {
+        return getServer();
+    }
+
+    @Override
+    public void setServerURI(String val) {
+    }
+    
+    @Override
+    public String getSchema() {
+        return "http";
+    }
+    
+    @Override
+    public String getServer() {
+        return "test.open.dolphin";
+    }
+    
+    @Override
+    public String getPort() {
+        return "8080";
+    }
+    
+    @Override
+    public boolean isTester() {
+        return true;
+    }
+    
+    @Override
+    public boolean claimSenderIsClient() {
+        String test = getString(CLAIM_SENDER);
+        return (test!=null && test.equals("client"));
+    }
+    
+    @Override
+    public boolean claimSenderIsServer() {
+        return false;
+    }
+    
+    @Override
+    public boolean canAccessToOrca() {
+        // In case of orca connetion is client = valid address else false
+        return claimSenderIsClient() && claimAddressIsValid();
+    }
+    
+    @Override
+    public boolean canSearchMaster() {
+        return !claimSenderIsClient() || claimAddressIsValid();
+    }
+    
+    @Override
+    public boolean canGlobalPublish() {
+        return false;
+    }
+
+    @Override
+    public String getContextRoot() {
+        return CONTEXT_ROOT;
+    }
+}

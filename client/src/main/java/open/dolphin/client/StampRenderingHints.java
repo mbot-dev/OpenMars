@@ -1,0 +1,130 @@
+package open.dolphin.client;
+
+import java.awt.Color;
+
+/**
+ * StampRenderingHints
+ * 
+ * @author Minagawa, Kazushi
+ *
+ */
+public class StampRenderingHints {
+
+    private int fontSize = 12;
+    private Color foreground;
+    private Color background = Color.WHITE;
+    private Color labelColor;
+    private int border = 0;
+    private int cellSpacing = 1;    //masuda 0 -> 1 to avoid unexpected line wrap
+    private int cellPadding = 0;    //masuda 3 -> 0 to make slim
+    private boolean showStampName; 
+
+    public int getFontSize() {
+        return fontSize;
+    }
+
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+    }
+
+    public Color getForeground() {
+        return foreground;
+    }
+
+    public void setForeground(Color foreground) {
+        this.foreground = foreground;
+    }
+
+    public Color getBackground() {
+        return background;
+    }
+
+    public void setBackground(Color background) {
+        this.background = background;
+    }
+
+    public Color getLabelColor() {
+        return labelColor;
+    }
+
+    public void setLabelColor(Color labelColor) {
+        this.labelColor = labelColor;
+    }
+
+    public int getBorder() {
+        return border;
+    }
+
+    public void setBorder(int border) {
+        this.border = border;
+    }
+
+    public int getCellPadding() {
+        return cellPadding;
+    }
+
+    public void setCellPadding(int cellPadding) {
+        this.cellPadding = cellPadding;
+    }
+
+    public int getCellSpacing() {
+        return cellSpacing;
+    }
+
+    public void setCellSpacing(int cellSpacing) {
+        this.cellSpacing = cellSpacing;
+    }
+
+    public boolean getShowStampName() {
+        return showStampName;
+    }
+
+    public void setShowStampName(boolean showStampName) {
+        this.showStampName = showStampName;
+    }
+
+    public String getForegroundAs16String() {
+        if (getForeground() == null) {
+            return "#000C9C";
+        } else {
+            int r = getForeground().getRed();
+            int g = getForeground().getGreen();
+            int b = getForeground().getBlue();
+            String sb = "#" +
+                    Integer.toHexString(r) +
+                    Integer.toHexString(g) +
+                    Integer.toHexString(b);
+            return sb;
+        }
+    }
+
+    public String getBackgroundAs16String() {
+        if (getBackground() == null) {
+            return "#FFFFFF";
+        } else {
+            int r = getBackground().getRed();
+            int g = getBackground().getGreen();
+            int b = getBackground().getBlue();
+            String sb = "#" +
+                    Integer.toHexString(r) +
+                    Integer.toHexString(g) +
+                    Integer.toHexString(b);
+            return sb;
+        }
+    }
+
+    public String getLabelColorAs16String() {
+        if (getLabelColor() == null) {
+            return "#FFCED9";
+        } else {
+            int r = getLabelColor().getRed();
+            int g = getLabelColor().getGreen();
+            int b = getLabelColor().getBlue();
+            String sb = "#" +
+                    Integer.toHexString(r) +
+                    Integer.toHexString(g) +
+                    Integer.toHexString(b);
+            return sb;
+        }
+    }
+}
