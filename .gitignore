@@ -1,5 +1,4 @@
 .DS_Store
-.idea
 /common/target/
 /server/target/
 /client/target/
